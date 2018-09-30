@@ -1,6 +1,7 @@
 # Coding Challenge
 
 ### Coded files
+Created 2 homepages - English and French versions. Index page will load English/French text. To see both pages, please click the top right language switcher. (French vers havs only placeholder texts currently.)
 
 - index.php
 - includes/header.php
