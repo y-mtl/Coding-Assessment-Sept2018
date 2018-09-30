@@ -31,8 +31,7 @@ For the web, please use the following files:
 
 - index.php
 - set_lang.php
-- includes/ALL files under this folder
-- languages/ALL files under this folder
+- includes/ALL files and folder under this folder
 - assets/ALL files files under this folder
 
 ### Linting
