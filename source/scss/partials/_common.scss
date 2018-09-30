@@ -1,0 +1,18 @@
+ul {
+  list-style-type: none;
+}
+
+a {
+  cursor: pointer;
+  padding: 5px;
+  transition: 1s all ease;
+}
+
+a:hover, ul li a:hover {
+  text-decoration: none;
+}
+
+*:focus, a:focus, ul li a:focus {
+  outline: none;
+  text-decoration: none;
+}

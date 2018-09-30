@@ -1,0 +1,10 @@
+@import "partials/variables";
+
+header {
+  &.container {
+    .row::before {
+      content: "*Please enable Javascript in your browser.";
+      color: $red;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+// flip screenshots
+@keyframes screenshot {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  50% { opacity: 1; }
+  55% { opacity: 0; }
+}
+
+@keyframes z-index {
+  0% { z-index: 0; }
+  5% { z-index: 5; }
+  52% { z-index: 5; }
+  55% { z-index: 0}
+}
+@keyframes msg-top {
+  0% { opacity: 0; transform: translateX(-200px); }
+  5% { opacity: 1; transform: translateX(0); }
+  52% { opacity: 1; transform: translateX(0); }
+  55% { opacity: 0; transform: translateX(-200px); }
+}
+
+@keyframes msg-mid {
+  0% { opacity: 0; transform: translateX(-200px); }
+  5% { opacity: 0; transform: translateX(-200px); }
+  10% { opacity: 1; transform: translateX(0); }
+  52% { opacity: 1; transform: translateX(0); }
+  55% { opacity: 0; transform: translateX(-200px); }
+}
+
+@keyframes msg-last {
+  0% { opacity: 0; transform: translateX(-200px); }
+  10% { opacity: 0; transform: translateX(-200px); }
+  15% { opacity: 1; transform: translateX(0); }
+  52% { opacity: 1; transform: translateX(0); }
+  55% { opacity: 0; transform: translateX(-200px); }
+}
+
+@keyframes nav-open {
+  0% { transform: translate(-100%, -100%); }
+  100% { transform: translate(0%, 0%); }
+}
+
+@keyframes nav-out {
+    0% { transform: translate(0%, 0%); }
+    100% { transform: translate(-100%, -100%); }
+}
+
+/* the below is for an animation by js to ease in elements */
+.effect, .effect-elem {
+    transition: 1s;
+}
+
+// effect for engagement section
+.effect-to-right,
+.effect-to-left,
+.effect-to-bottom,
+.effect-to-top {
+  transform: translate(0, 0);
+  transition: 1s all ease;
+  opacity: 1;
+}
+
+.effect-to-right.move,
+.effect-to-left.move,
+.effect-to-bottom.move,
+.effect-to-top.move
+{
+  opacity: 0;
+}
+
+.effect-to-right.move {
+  transform: translate(-40px, 0);
+}
+
+ .effect-to-left.move {
+  transform: translate(40px, 0);
+ }
+
+ .effect-to-bottom.move {
+  transform: translate(0, 50);
+}
+
+ .effect-to-top.move {
+  transform: translate(0, -50);
+ }
+/* end of animation */

@@ -1,0 +1,773 @@
+@import "partials/reset";
+@import "partials/variables";
+@import "partials/grid";
+@import "partials/typography";
+@import "partials/animation";
+@import "partials/mixins";
+@import "partials/common";
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+header {
+  background-color: $white;
+  border-bottom: 2px solid $green_light;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  @media screen and #{$device_desktop_md} { padding: 10px 0; }
+  @media screen and #{$device_tablet} { padding: 10px 0; }
+  @media screen and #{$device_mobile} { padding: 5px 0; }
+
+  a {
+    &.logo {
+      float: left;
+      padding-left: 0;
+      position: relative;
+      @media screen and #{$device_tablet} { padding-bottom: 0; }
+      &::after {
+        background: url("../images/logo-robot.png") top left / contain no-repeat;
+        content: "";
+        display: block;
+        height: 100px;
+        position: absolute;
+        right: -110px;
+        top: 3px;
+        width: 100px;
+        z-index: -10;
+        @media screen and #{$device_mobile_tablet} { background: none; }
+      }
+      img {
+        height: auto;
+        width: 200px;
+        @media screen and #{$device_mobile_tablet} { width: 180px; }
+      }
+    }
+  }
+
+  h1 {
+    clear: both;
+    float: left;
+    margin-top: 0;
+    @media screen and #{$device_mobile} { font-size: 5px; font-size: .5rem; margin-bottom: 5px; }
+    @media screen and #{$device_tablet} { font-size: 5px; font-size: .5rem; letter-spacing: 0;}
+  }
+
+  nav {
+    float: right;
+    margin-top: -30px;
+    @media screen and #{$device_tablet} { margin-top: 0; font-size: 15px; font-size: 1.5rem; }
+    @media screen and #{$device_desktop_md} { margin-top: 15px; }
+
+    ul {
+      float: left;
+      li {
+        float: left;
+        margin-right: 20px;
+        &:last-child {
+          margin-right: 0;
+        }
+        a {
+          @include animation-underline-center();
+          opacity: 0.8;
+          &.btn {
+            @include btn($blue, $yellow, 7px 20px);
+            &::after {
+              height: 0;
+            }
+          }
+        }
+        &.switch {
+          font-size: 12px; font-size: 1.2rem;
+          margin-top: -20px;
+          opacity: 0.5;
+          text-transform: uppercase;
+          a {
+            &.active {
+              font-weight: 700;
+            }
+            &::after {
+              height: 0;
+            }
+            &:nth-child(2)::before {
+              content: '|';
+              margin-left: -5px;
+              padding-right: 10px;
+            }
+           }
+        }
+      }
+    }
+  }
+
+}
+
+main {
+  background: url("../images/applauz-intro.jpg") no-repeat left top;
+  background-position-y: 100px;
+  overflow: hidden;
+  padding-top: 170px;
+  @media screen and #{$device_desktop_md} { background-position: -400px 0; padding-top: 210px; }
+  @media screen and #{$device_tablet} { background-position-x: -300px; background-position-y: -100px; }
+  @media screen and #{$device_mobile} { background: url("../images/aplz-home-mobilej.jpg") no-repeat left top; background-position-y: -70px; padding-top: 100px; }
+  .banner {
+    .screens {
+      position: relative;
+      @media screen and #{$device_mobile_to_md} { text-align: center; }
+      @media screen and #{$device_mobile} { margin-top: 70px; }
+      img {
+        @media screen and #{$device_mobile_to_md} { width: 410px; }
+        @media screen and #{$device_tablet} { width: 365px; }
+        @media screen and #{$device_mobile} { width: 330px; }
+      }
+
+      .slider {
+        @media screen and #{$device_mobile} { position: absolute; top: 10px; height: 175px; width: 310px; }
+        img, .shadow {
+          position: absolute;
+          top: 20px;
+          right: -10px;
+        }
+        img {
+          animation-name: screenshot;
+          animation-duration: 8s;
+          animation-iteration-count: infinite;
+          opacity: 0;
+          @media screen and #{$device_mobile_to_md} { width: 380px; top: 15px; right: 55px; }
+          @media screen and #{$device_tablet} { width: 340px; top: 12px; right: 9px; }
+          @media screen and #{$device_mobile} { height: 175px; width: 310px; top: 0; left: 0; }
+        }
+        img:nth-child(2) {
+          animation-delay: 4s;
+        }
+        .shadow {
+          height: 320px;
+          opacity: 0.5;
+          width: 562px;
+          @include inner-shadow($black);
+          @media screen and #{$device_mobile_to_md} { height: 217px; width: 380px; top: 15px; right: 55px; }
+          @media screen and #{$device_tablet} { height: 195px; width: 340px; top: 12px; right: 9px; }
+          @media screen and #{$device_mobile} { height: 175px; width: 310px; top: 0; left: 0; }
+        }
+      }
+    }
+    .catch {
+      position: relative;
+      a {
+        @include btn-large($white, $yellow, 15px);
+        font-size: 30px; font-size: 3rem;
+        letter-spacing: 0;
+        display: inline-block;
+        margin-top: 30px;
+        padding: 15px 25px;
+        @media screen and #{$device_mobile} { font-size: 22px; font-size: 2.2rem; font-weight: 300; padding: 10px 15px; }
+
+      }
+      .msg1, .msg2 {
+        position: absolute;
+        @media screen and #{$device_mobile} { text-align: center; }
+      }
+      .msg1 {
+        top: 50px;
+        @media screen and #{$device_desktop_md} { top: 0; }
+        @media screen and #{$device_tablet} { top: 20px; }
+        @media screen and #{$device_mobile} { position: relative; top: 0; }
+      }
+      .msg2 {
+        top: 80px;
+        @media screen and #{$device_desktop_md} { top: 30px; }
+        @media screen and #{$device_tablet} { top: 50px; }
+        @media screen and #{$device_mobile} { top: 0; margin-left: -15px; width: 100%; }
+      }
+      .msg1 {
+        // needs this z-index animation to have a tag clickable
+        animation-name: z-index;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        h2 {
+          animation-name: msg-top;
+          animation-duration: 10s;
+          animation-iteration-count: infinite;
+          opacity: 0;
+        }
+        h3 {
+          animation-name: msg-mid;
+          animation-duration: 10s;
+          animation-iteration-count: infinite;
+          opacity: 0;
+        }
+        a {
+          animation-name: msg-last;
+          animation-duration: 10s;
+          animation-iteration-count: infinite;
+          opacity: 0;
+        }
+      }
+      .msg2 {
+        animation-name: z-index;
+        animation-delay: 5s;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        p.title {
+          animation-name: msg-top;
+          animation-delay: 5s;
+          animation-duration: 10s;
+          animation-iteration-count: infinite;
+          opacity: 0;
+        }
+        p.title + p {
+          animation-name: msg-mid;
+          animation-delay: 5s;
+          animation-duration: 10s;
+          animation-iteration-count: infinite;
+          opacity: 0;
+        }
+        a {
+          animation-name: msg-last;
+          animation-delay: 5s;
+          animation-duration: 10s;
+          animation-iteration-count: infinite;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  section {
+    &.workplace {
+      overflow: hidden;
+      .contents {
+        background-color: transparent;
+        @media screen and #{$device_mobile}{ padding: 0; }
+        .effect-to-right {
+          background-color: $blue;
+          transition: all 1s ease;
+        }
+        .effect-to-left {
+          background-color: $grey;
+          transition: all 1s ease;
+          .split-block{ padding-left: 15px; }
+        }
+        .effect-to-right:hover,
+        .effect-to-left:hover {
+          background-color: $yellow;
+          a {
+            background-color: $blue;
+          }
+        }
+        .split-block {
+          height: 350px;
+          float: left;
+          padding-top: 12%;
+          padding-bottom: 12%;
+          position: relative;
+          width: 50%;
+          @media screen and #{$device_desktop_md} {
+            width: 75%;
+          }
+          @media screen and #{$device_tablet} {
+            height: 300px;
+            width: 95%;
+          }
+          @media screen and #{$device_mobile} {
+            height: 220px;
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%;}
+
+          // layout
+          h4 { height: 25%; }
+          p { height: 55%; }
+          a { height: 20%; }
+
+          p {
+            font-size: 16px; font-size: 1.6rem;
+          }
+          a {
+            @include btn($black, $blue, 10px 30px);
+            display: block;
+            float:left;
+            font-size: 16px; font-size: 1.6rem;
+            letter-spacing: 1px;
+          }
+
+          @media screen and #{$device_desktop_md} {
+            p {
+              height: 40%;
+            }
+          }
+          @media screen and #{$device_mobile_to_md} {
+            h4 {
+              font-size: 20px; font-size: 2rem;
+              font-weight: 500;
+            }
+          }
+
+          @media screen and #{$device_tablet} {
+            a {
+              height: 20%;
+            }
+            p {
+              height: 45%;
+            }
+          }
+
+          @media screen and #{$device_mobile} {
+            h4 { height: 35%; }
+            p {
+              font-size: 14px;
+              font-size: 1.4rem;
+              height: 45%;
+            }
+            a {
+              display: inline-block;
+              float: none;
+              height: 30%;
+            }
+          }
+        }
+
+        // images of humans
+        img {
+          position: absolute;
+          top: 22%;
+          transition: .5s all ease;
+          @media screen and #{$device_mobile_tablet} {
+            display: none;
+          }
+        }
+        .effect-to-right {
+          img { right: -100px; }
+          img:last-child { right: -240px; top: 25%; }
+          &:hover {
+            img { transform: translateX(25px); }
+            img:last-child { transform: translateX(-25px); }
+          }
+          @media screen and #{$device_desktop_md} {
+            img { right: -10px; width: 20%;}
+            img:last-child { right: -100px; width: 22%; }
+            &:hover {
+              img { transform: translateX(10px); }
+              img:last-child { transform: translateX(-10px); }
+            }
+          }
+        }
+        .effect-to-left {
+          img { right: -150px; }
+          img:last-child { right: -300px; }
+          &:hover {
+            img { transform: translateY(-20px); }
+            img:last-child { transform: translateX(-35px);  }
+          }
+          @media screen and #{$device_desktop_md} {
+            img { right: -60px; width: 25%;}
+            img:last-child { right: -150px; width: 23%; }
+            &:hover {
+              img { transform: translateY(-20px); }
+              img:last-child { transform: translateX(-15px);  }
+            }
+          }
+        }
+      }
+    }
+    .top {
+      margin-top: 150px;
+      @media screen and #{$device_desktop_md} { top: 100px; }
+    }
+    h3, h3 + p {
+      padding-bottom: 0.3em;
+      text-align: center;
+    }
+    .contents {
+      background-color: $grey;
+      min-height: 350px;
+      margin-top: 150px;
+      @media screen and #{$device_desktop_md} { top: 60px; }
+      div:first-child, div:nth-child(2) {
+        height: 100%;
+      }
+      &.engagement {
+        background-color: transparent;
+          @media screen and #{$device_desktop_md} { margin-bottom: 150px; }
+        div {
+          background-color: transparent;
+        }
+        h4 {
+          @media screen and #{$device_mobile} { margin-bottom: 30px; }
+          span {
+            background: url('../images/step-number.png') no-repeat center center;
+            display: inline-block;
+            margin-left: -20px;
+            padding: 40px 30px;
+          }
+        }
+        img {
+          height: auto;
+          margin-bottom: 50px;
+          width: 490px;
+          float: right;
+          @media screen and #{$device_desktop_md} { width: 480px; }
+          @media screen and #{$device_mobile_tablet} { margin-top: 35px; width: 370px; }
+          &.img-l {
+            float: left;
+          }
+        }
+        p {
+          font-size: 16px; font-size: 1.6rem;
+        }
+      }
+    }
+  &:last-child {
+    border-top: 1px solid $green-light;
+  }
+  }
+  .links {
+    clear: both;
+    display: block;
+    width: 100%;
+    @media screen and #{$device_desktop_md} { z-index: 10; }
+    a {
+      align-items: center;
+      background-color: $green_light;
+      display: flex;
+      font-size: 34px; font-size: 3.4rem;
+      height: 80px;
+      justify-content: center;
+      text-align: center;
+      transition: .5s all ease;
+      width: 100%;
+
+      &:first-child {
+        background-color: $black;
+        color: $white;
+        @media screen and #{$device_desktop_md} {
+          font-size: 28px; font-size: 2.8rem;
+          strong { font-weight: 500; }
+        }
+        @media screen and #{$device_tablet} {
+          font-size: 20px; font-size: 2rem;
+        }
+        @media screen and #{$device_mobile} {
+          font-size: 16px; font-size: 1.6rem;
+        }
+      }
+      &:last-child {
+        font-size: 28px; font-size: 2.8rem;
+        @media screen and #{$device_tablet} {
+          font-size: 20px; font-size: 2rem;
+        }
+        @media screen and #{$device_mobile} {
+          font-size: 16px; font-size: 1.6rem;
+        }
+      }
+      span {
+        padding: 10px;
+        &.arrow {
+          background: url('../images/ico-callouthead-arrow.png') no-repeat center center;
+          padding: 30px;
+          position: relative;
+          @media screen and #{$device_mobile} { background-size: 30%; }
+        }
+        &.arrow-secondary {
+          background: url('../images/ico-callouthead-arrow.png') no-repeat center center;
+          background-size: 90%;
+          opacity: 0;
+          position: absolute;
+          top: 40%;
+          left: 30%;
+          transition: .3s all ease;
+          @media screen and #{$device_mobile} { background-size: 65%; }
+
+        }
+        &.arrow-white {
+          background: url('../images/ico-calloutbody-arrow.png') no-repeat center center;
+          padding: 30px;
+          position: relative;
+          @media screen and #{$device_mobile} { background-size: 35%; }
+        }
+        &.arrow-white-secondary {
+          background: url('../images/ico-calloutbody-arrow.png') no-repeat center center;
+          background-size: 70%;
+          opacity: 0;
+          padding: 15px;
+          position: absolute;
+          top: 35%;
+          left: 30%;
+          transition: .3s all ease;
+          @media screen and #{$device_mobile} { background-size: 50%; top: 30%; }
+        }
+      }
+      &:hover {
+        height: 100px;
+      }
+      &:hover span.arrow-secondary {
+        left: 90%;
+        opacity: 1;
+        top: 37%;
+        @media screen and #{$device_desktop_md} { top: 40%; }
+        @media screen and #{$device_mobile} { left: 75%; }
+      }
+      &:hover span.arrow-white-secondary {
+        left: 80%;
+        opacity: 1;
+        @media screen and #{$device_mobile} { left: 70%; }
+      }
+    }
+  }
+  #testimonials {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    h3 {
+      margin-bottom: 50px;
+    }
+    img {
+      float: left;
+      padding: 30px 5px;
+      width: 20%;
+    }
+    .testimonial-content {
+      float: left;
+      margin-left: 15px;
+      width: 65%;
+      p {
+        &:first-child {
+          background: url("../images/quotes.png") no-repeat 0 0;
+          font-size: 16px; font-size: 1.6rem;
+          letter-spacing: 0;
+          padding: 30px 5px 5px;
+        }
+        &.author {
+          clear: left;
+          margin-top: 20px;
+        }
+      }
+    }
+
+  }
+  .partners {
+    margin-top: 150px;
+    h3 {
+      margin-bottom: 80px;
+    }
+    ul {
+      float: left;
+      margin-top: 25px;
+      li {
+        float: left;
+        margin-right: 1%;
+        margin-bottom: 50px;
+        opacity: 0.3;
+        width: 15%;
+        &:first-child {
+          margin-top: 25px;
+        }
+        @media screen and #{$device_mobile} { margin-bottom: 15px; text-align: center; width: 100%; }
+        img {
+          width: 100%;
+          @media screen and #{$device_mobile} { width: 50%; }
+
+        }
+      }
+    }
+  }
+
+}
+
+footer {
+  background: url('../images/footer-robot.png') no-repeat 0 0;
+  background-color: $footer_black;
+  padding: 60px 0;
+  h5 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  ul {
+    margin-bottom: 35px;
+    li {
+      a {
+        @include animation-underline-left();
+        padding-left: 0;
+      }
+    }
+    &.badges {
+      float: left;
+      margin-top: 50px;
+      li {
+        float: left;
+        margin-right: 15px;
+        opacity: 0.5;
+        img {
+          @include color-to-gray(100%);
+        }
+      }
+    }
+  }
+  .awards {
+    margin-top: 55px;
+    img {
+      @include color-to-gray(100%);
+      height: 80px;
+      width: auto;
+    }
+    a + img {
+      margin-left: 5px;
+      & + img {
+        margin-left: -15px;
+      }
+    }
+  }
+  form {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 95%;
+    label {
+      display: none;
+    }
+    input {
+      background-color: $footer_black;
+      padding: 5px;
+
+      &[type=email] {
+        @include placeholder-color($white);
+        border: 1px solid $footer_grey;
+        transition: 1s all ease;
+        width: 68%;
+        &:focus {
+          @include placeholder-color($black);
+          background-color: $white;
+          color: $footer_black;
+        }
+      }
+
+      &[type=submit] {
+        background-color: $footer_btn_bg;
+        border: 1px solid $footer_btn_bg;
+        color: $footer_black;
+        transition: 1s all ease;
+        width: 30%;
+        &:hover {
+          background-color: $white;
+          color: $black;
+        }
+      }
+    }
+  }
+  p.last {
+    a {
+      position: relative;
+      &::after {
+        background: $footer_grey;
+        bottom: 5px;
+        content: '';
+        height: 1px;
+        left: 5px;
+        opacity: 1;
+        position: absolute;
+        translation: 3s all ease;
+        width: 89%;
+      }
+      &:hover {
+        color: $white;
+        &::after {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+// nav menu for mobile
+#nav-toggle {
+    @media screen and #{$device_tablet_and_up} {
+      display: none;
+    }
+    display: block;
+    height: 65px;
+    margin-top: -10px;
+    margin-right: -30px;
+    padding: 15px 20px;
+    position: fixed;
+    right: 25px;
+    top: 0;
+    &:hover {
+      span {
+        background-color: $green_light;
+      }
+    }
+
+  span {
+    background-color: $black_nav_bar;
+    display: block;
+    height: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 1px;
+    width: 40px;
+    transition: .5s all ease;
+  }
+}
+@media screen and #{$device_mobile} {
+
+    #nav-toggle + nav { position: absolute; top: -100%; left: -100%; transition: .5s all ease; }
+    #nav-toggle.close + nav {
+      animation-name: nav-close;
+      animation-duration: .5s;
+      top: -100%; left: -100%;
+    }
+    #nav-toggle.open + nav {
+      animation-name: nav-open;
+      animation-duration: .5s;
+      top: 0; left: 0;
+    }
+    #nav-toggle.open, #nav-toggle.close {
+      & + nav {
+        display: block;
+        height: auto;
+        position: absolute;
+        width: 100%;
+        z-index: -10;
+        ul {
+          background-color: $white;
+          margin: 93px 0;
+          padding: 20px 0 120px 0;
+          width: 100%;
+          li {
+            text-align: center;
+            width: 100%;
+            a {
+              font-size: 16px; font-size: 1.6rem;
+              padding: 10px;
+              &.btn {
+                margin-bottom: 5px;
+                padding: 5px 20px;
+              }
+              &::after {
+                height: 0;
+              }
+            }
+            &.switch {
+              margin-top: 0;
+              a {
+                font-size: 12px; font-size: 1.2rem;
+                &:last-child {
+                  &::before {
+                    color: $black;
+                    padding-right: 15px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}

@@ -1,0 +1,3 @@
+header.container .row::before {
+  content: "*Please enable Javascript in your browser.";
+  color: #f14a4a; }
