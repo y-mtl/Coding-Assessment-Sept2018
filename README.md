@@ -29,11 +29,11 @@ used the folloing plugins
 ### Requied files and folders
 For the web, please use the following files:
 
--index.php
--set_lang.php
--includes/ALL files under this folder
--languages/ALL files under this folder
--assets/ALL files files under this folder
+- index.php
+- set_lang.php
+- includes/ALL files under this folder
+- languages/ALL files under this folder
+- assets/ALL files files under this folder
 
 ### Linting
 
